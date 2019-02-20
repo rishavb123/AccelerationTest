@@ -13,10 +13,12 @@ if (window.DeviceMotionEvent != undefined) {
 
 
         const deltaT = (new Date().getTime() - curTime) / 1000.0;
-        v += e.acceleration.x * deltaT;
+        v += Math.round(e.acceleration.x * 10) / 10.0 * deltaT;
         document.getElementById("p4").innerHTML = Math.round(v);
 
         first = false;
 
     }
 }
+
+document.getElementById("reset").onclick = () => { v = 0; };
