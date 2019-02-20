@@ -1,22 +1,22 @@
 {
-  "name": "measure",
-  "version": "1.0.0",
-  "description": "",
-  "scripts": {
-    "test": "nodemon server.js",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rishavb123/AccelerationTest.git"
-  },
-  "author": "bhagat",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rishavb123/AccelerationTest/issues"
-  },
-  "homepage": "https://github.com/rishavb123/AccelerationTest#readme",
-  "dependencies": {
-    "express": "^4.16.4"
-  }
+    "name": "measure",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "test": "nodemon server.js",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rishavb123/AccelerationTest.git"
+    },
+    "author": "bhagat",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/rishavb123/AccelerationTest/issues"
+    },
+    "homepage": "https://github.com/rishavb123/AccelerationTest#readme",
+    "dependencies": {
+        "express": "^4.16.4"
+    }
 }
