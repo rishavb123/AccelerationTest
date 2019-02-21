@@ -126,6 +126,9 @@ c.onclick = () => {
 
 };
 
+
+
+
 let animations = [
     () => {
         lineBetween(0, 3);
