@@ -192,8 +192,12 @@ let animations = [
         lineBetween(2, 3);
     },
     () => {
+        for(let i = 0; i< 3; i++)
+            lineBetween(i, 4);
+    },
+    () => {
         for(let i = 0; i < 3; i++)
-            for(let j = 4; j < 7; j++)
+            for(let j = 5; j < 7; j++)
                 lineBetween(i, j);
     },
     () => {
