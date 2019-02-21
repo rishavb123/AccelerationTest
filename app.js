@@ -82,25 +82,27 @@ function drawLine(startX,startY,endX,endY){
   ctx.stroke();
 }
 
-function colOfCircles(numOfCircles,x){
+function colOfCircles(numOfCircles,x,radius){
   for(var i =0; i!=numOfCircles; i++){
     var xcord = x
     var ycord = (i+1)*c.height/(numOfCircles+1)
     circles.push({x:xcord,y:ycord})
-    cir(xcord,ycord,50, 0);
+    cir(xcord,ycord,radius, 0);
   }
 }
 
-function renderCircles(numOfCircles){
+function renderCircles(numOfCircles,radius){
+  circles = [];
   for(var i =0; i!=numOfCircles.length; i++){
-    colOfCircles(numOfCircles[i],(i+1)*c.width/(numOfCircles.length+1));
+    colOfCircles(numOfCircles[i],(i+1)*c.width/(numOfCircles.length+1),radius);
   }
 }
 
-
+var radius = 50;
+var cirArr = [3,4,4,2];
 function render (){
   clear();
-  renderCircles([3,4,4,2]);
+  renderCircles(cirArr,radius);
   for(var lineObj of lines){
     drawLine(lineObj.startX,lineObj.startY,lineObj.endX,lineObj.endY)
   }
@@ -126,20 +128,51 @@ c.onclick = () => {
 
 };
 
+let intervalz = setInterval(render, 25);
+
 document.onkeypress = function (e) {
     e = e || window.event;
-    console.log("hi");
-    if(animationIndex>=0){
+    console.log(e.keyCode)
+    if(e.keyCode==98){
       lines = [];
       dots = [];
-      animationIndex--;
-      animationIndex--;
-      for(let i = 0; i <= animationIndex; i++){
-        animations[i]();
-      }
-      animationIndex++;
+      radius=10;
+      cirArr = [20,8,20,10];
+      let delay = 0;
+      renderCircles(cirArr);
+
+      clearInterval(intervalz);
+      interval = setInterval(render, 200);
+      numberOfSteps = 800;
+
+      for(let i = 0; i < cirArr[0]; i++)
+        for(let j = cirArr[0]; j < cirArr[0] + cirArr[1]; j++){
+          delay = 5*(i+1)*(j+1);
+          setTimeout(() => lineBetween(i ,j), delay);
+        }
+        numberOfSteps = 6;
+          for(let i = cirArr[0]; i < cirArr[0] + cirArr[1]; i++)
+            for(let j = cirArr[0] + cirArr[1]; j < cirArr[0] + cirArr[1] + cirArr[2]; j++)
+              setTimeout(() => lineBetween(i ,j), 5*(i+1)*(j+1));
+              for(let i = cirArr[0]; i < cirArr[0] + cirArr[1] + cirArr[2]; i++)
+                for(let j = cirArr[0] + cirArr[1]; j < cirArr[0] + cirArr[1] + cirArr[2] + cirArr[3]; j++)
+                  setTimeout(() => lineBetween(i ,j), 5*(i+1)*(j+1));
+
+
     }else{
-      alert("STUPID")
+      console.log("hi");
+      if(animationIndex>=0){
+        lines = [];
+        dots = [];
+        animationIndex--;
+        animationIndex--;
+        for(let i = 0; i <= animationIndex; i++){
+          animations[i]();
+        }
+        animationIndex++;
+      }else{
+        alert("STUPID")
+      }
     }
 };
 
@@ -176,8 +209,6 @@ let animations = [
                 lineBetween(i, j);
     },
 ];
-
-let interval = setInterval(render, 25);
 
 //x,y,radius,start angle, end angle
 //ctx.arc(95, 50, 40, 0, 2 * Math.PI);
