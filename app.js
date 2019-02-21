@@ -66,7 +66,7 @@ function movePartical(startX,startY,endX,endY){
       ,endY:y
     }
     i++;
-      if(i>numberOfSteps){
+      if(i>=numberOfSteps){
 
         clearInterval(particalMover);
 
