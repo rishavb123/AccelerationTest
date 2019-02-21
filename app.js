@@ -126,6 +126,24 @@ c.onclick = () => {
 
 };
 
+document.onkeypress = function (e) {
+    e = e || window.event;
+    console.log("hi");
+    if(animationIndex>=0){
+      lines = [];
+      dots = [];
+      animationIndex--;
+      animationIndex--;
+      for(let i = 0; i <= animationIndex; i++){
+        animations[i]();
+      }
+      animationIndex++;
+    }else{
+      alert("STUPID")
+    }
+};
+
+
 
 
 
